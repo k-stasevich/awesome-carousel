@@ -1,0 +1,30 @@
+@import '../colors.scss';
+
+$item-background: $color-grey1;
+$item-background-selected: $white;
+
+.switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__item {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid $item-background;
+    background: $item-background;
+
+    margin: 0 5px;
+
+    cursor: pointer;
+
+    &:hover {
+      background: $item-background-selected;
+    }
+
+    &.active {
+      background: $item-background-selected;
+    }
+  }
+}

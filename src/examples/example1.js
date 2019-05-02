@@ -1,17 +1,21 @@
 import React from 'react';
 import { Carousel } from '../Carousel';
 
+import './example1.scss';
+
 const items = [
-  { id: '1', label: 'Item 1' },
-  { id: '2', label: 'Item 2' },
-  { id: '3', label: 'Item 3' },
-  { id: '4', label: 'Item 4' },
+  { id: '1', label: <div className="example1__item">Item 1</div> },
+  { id: '2', label: <div className="example1__item">Item 2</div> },
+  { id: '3', label: <div className="example1__item">Item 3</div> },
+  { id: '4', label: <div className="example1__item">Item 4</div> },
 ];
 
 const Example1Component = props => {
   return (
-    <div>
-      <Carousel items={items} />
+    <div className="example1-wrapper">
+      <div className="example1-wrapper2">
+        <Carousel items={items} />
+      </div>
     </div>
   );
 };
