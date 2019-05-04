@@ -1,16 +1,21 @@
-.example1-wrapper {
+.wrapper-centered {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
 }
 
-.example1-wrapper2 {
+.card-300x400 {
   width: 300px;
   height: 400px;
 }
 
-.example1__item {
+.card-400x600 {
+  width: 400px;
+  height: 600px;
+}
+
+.example-storybook-carousel-item {
   display: flex;
   justify-content: center;
   align-items: center;
