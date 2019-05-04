@@ -1,0 +1,29 @@
+@import '../colors.scss';
+
+.arrow {
+  border: solid $color-dark-grey1;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 6px;
+  cursor: pointer;
+
+  &--right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  &--left {
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+
+  &--up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+  }
+
+  &--down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+}

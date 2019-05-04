@@ -3,12 +3,15 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import './Switcher.scss';
+import { Arrow, ARROW_ENUM } from '../Arrow';
 
 export const Switcher = props => {
-  const { items, selectedId, onSelect } = props;
+  const { items, selectedId, onSelect, selectPrev, selectNext } = props;
 
   return (
     <div className="switcher">
+      <Arrow direction={ARROW_ENUM.LEFT} onClick={selectPrev} />
+
       {items.map(({ id }) => {
         return (
           <div
@@ -18,6 +21,8 @@ export const Switcher = props => {
           />
         );
       })}
+
+      <Arrow onClick={selectNext} />
     </div>
   );
 };
@@ -30,6 +35,8 @@ Switcher.propTypes = {
   ).isRequired,
   selectedId: PropTypes.string.isRequired,
   onSelect: PropTypes.func.isRequired,
+  selectPrev: PropTypes.func.isRequired,
+  selectNext: PropTypes.func.isRequired,
 };
 
 Switcher.defaultProps = {};

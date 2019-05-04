@@ -18,12 +18,34 @@ export const Carousel = props => {
 
   const { itemWidth, itemHeight } = useGetItemDimensions(carouselRef);
 
+  const selectPrev = () => {
+    const currentIndex = getCurrentItemIndex(selectedId, items);
+    if (currentIndex === 0) return;
+    setSelectedId(items[currentIndex - 1].id);
+  };
+  const selectNext = () => {
+    const currentIndex = getCurrentItemIndex(selectedId, items);
+    if (currentIndex === items.length - 1) return;
+    setSelectedId(items[currentIndex + 1].id);
+  };
+
   return (
     <div className="carousel" ref={carouselRef}>
-      <ItemList items={items} selectedId={selectedId} itemWidth={itemWidth} itemHeight={itemHeight} />
+      <ItemList
+        items={items}
+        selectedId={selectedId}
+        itemWidth={itemWidth}
+        itemHeight={itemHeight}
+      />
 
       <div className="carousel__switcher-wrapper">
-        <Switcher items={items} selectedId={selectedId} onSelect={setSelectedId} />
+        <Switcher
+          items={items}
+          selectedId={selectedId}
+          onSelect={setSelectedId}
+          selectPrev={selectPrev}
+          selectNext={selectNext}
+        />
       </div>
     </div>
   );
@@ -47,4 +69,8 @@ const useGetItemDimensions = wrapperRef => {
   }, [wrapperRef]);
 
   return dimensions;
+};
+
+const getCurrentItemIndex = (selectedId, items) => {
+  return items.findIndex(i => i.id === selectedId);
 };
