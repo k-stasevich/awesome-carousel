@@ -1,29 +1,49 @@
 @import '../colors.scss';
 
 .arrow {
-  border: solid $color-dark-grey1;
-  border-width: 0 4px 4px 0;
-  display: inline-block;
-  padding: 6px;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 
-  &--right {
-    transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
+  &__item {
+    border: solid $color-dark-grey1;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 4px;
   }
 
-  &--left {
-    transform: rotate(135deg);
-    -webkit-transform: rotate(135deg);
+  &__svg {
+    position: absolute;
   }
 
-  &--up {
+  &:hover &__circle {
+    stroke-dashoffset: 0;
+  }
+
+  &__circle {
+    stroke-dasharray: 95;
+    stroke-dashoffset: 95;
+    stroke: $color-dark-grey1;
+    transition: stroke-dashoffset 0.9s;
+  }
+
+  &__item--right {
+    transform: translateX(-1px) rotate(-45deg);
+  }
+
+  &__item--left {
+    transform: translateX(1px) rotate(135deg);
+  }
+
+  &__item--up {
     transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
   }
 
-  &--down {
+  &__item--down {
     transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
   }
 }

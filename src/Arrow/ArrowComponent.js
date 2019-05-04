@@ -13,9 +13,23 @@ export const ARROW_ENUM = {
 export const Arrow = props => {
   const { direction, ...otherProps } = props;
 
-  const directionClass = `arrow--${direction}`;
+  const directionClass = `arrow__item--${direction}`;
 
-  return <div className={`arrow ${directionClass}`} {...otherProps} />;
+  return (
+    <div className="arrow" {...otherProps}>
+      <svg height="30" width="30" className="arrow__svg">
+        <circle
+          className="arrow__circle"
+          cx="15"
+          cy="15"
+          r="12"
+          strokeWidth="2"
+          fill="transparent"
+        />
+      </svg>
+      <div className={`arrow__item ${directionClass}`} />
+    </div>
+  );
 };
 
 Arrow.propTypes = {
