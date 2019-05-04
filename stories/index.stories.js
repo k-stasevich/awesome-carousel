@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import './index.stories.scss';
 
 import { Carousel } from '../src/Carousel';
+import { SWITCH_ANIMATION } from '../src/propTypes';
 
 const items = [
   { id: '1', label: <div className="example-storybook-carousel-item">Item 1</div> },
@@ -24,6 +25,13 @@ storiesOf('Samples', module)
     <div className="wrapper-centered">
       <div className="card-400x600">
         <Carousel items={items} />
+      </div>
+    </div>
+  ))
+  .add('Base Carousel. Animation = ZOOM_OUT', () => (
+    <div className="wrapper-centered">
+      <div className="card-300x400">
+        <Carousel items={items} switchAnimation={SWITCH_ANIMATION.ZOOM_OUT} />
       </div>
     </div>
   ));

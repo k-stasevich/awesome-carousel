@@ -1,16 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // components
 import { Switcher } from './Switcher';
 import { ItemList } from './ItemList';
 
-import { carouselItemPropTypes } from './propTypes';
+import { carouselItemPropTypes, switchAnimationPropTypes, SWITCH_ANIMATION } from './propTypes';
 
 import './Carousel.scss';
 
 export const Carousel = props => {
-  const { items } = props;
+  const { items, switchAnimation } = props;
 
   const carouselRef = useRef(null);
 
@@ -30,7 +31,10 @@ export const Carousel = props => {
   };
 
   return (
-    <div className="carousel" ref={carouselRef}>
+    <div
+      className={classnames('carousel', `carousel__animation--${switchAnimation}`)}
+      ref={carouselRef}
+    >
       <ItemList
         items={items}
         selectedId={selectedId}
@@ -53,6 +57,12 @@ export const Carousel = props => {
 
 Carousel.propTypes = {
   items: PropTypes.arrayOf(carouselItemPropTypes),
+  switchAnimation: switchAnimationPropTypes,
+};
+
+Carousel.defaultProps = {
+  items: [],
+  switchAnimation: SWITCH_ANIMATION.DEFAULT,
 };
 
 const useGetItemDimensions = wrapperRef => {

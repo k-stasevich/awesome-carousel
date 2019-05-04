@@ -14,8 +14,6 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
-
-    transition: margin-left 0.6s;
   }
 
   &__item-wrapper {
@@ -25,5 +23,28 @@
     position: absolute;
     bottom: 10px;
     width: 100%;
+  }
+
+  // ANIMATION EFFECTS
+  &__animation--default {
+    .carousel__list {
+      transition: margin-left 0.6s;
+    }
+  }
+
+  &__animation--zoom_out {
+    .carousel__list {
+      animation-name: switch_animation__zoom-out;
+      animation-duration: 4s;
+    }
+  }
+}
+
+@keyframes switch_animation__zoom-out {
+  from {
+    background-color: red;
+  }
+  to {
+    background-color: yellow;
   }
 }
