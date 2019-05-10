@@ -6,7 +6,11 @@ import classnames from 'classnames';
 import { Switcher } from './Switcher';
 import { ItemList } from './ItemList';
 
-import { carouselItemPropTypes, switchAnimationPropTypes, SWITCH_ANIMATION } from './propTypes';
+import {
+  carouselItemPropTypes,
+  switchAnimationPropTypes,
+  SWITCH_ANIMATION,
+} from './propTypes';
 
 import './Carousel.scss';
 
@@ -19,34 +23,48 @@ export const Carousel = props => {
 
   const { itemWidth, itemHeight } = useGetItemDimensions(carouselRef);
 
+  const onSlideSelect = selectedId => {
+    setSelectedId(selectedId);
+    carouselRef.current.classList.add('carousel__animation--run');
+  };
   const selectPrev = () => {
     const currentIndex = getCurrentItemIndex(selectedId, items);
     if (currentIndex === 0) return;
     setSelectedId(items[currentIndex - 1].id);
+    carouselRef.current.classList.add('carousel__animation--run');
   };
   const selectNext = () => {
     const currentIndex = getCurrentItemIndex(selectedId, items);
     if (currentIndex === items.length - 1) return;
     setSelectedId(items[currentIndex + 1].id);
+    carouselRef.current.classList.add('carousel__animation--run');
   };
 
   return (
     <div
-      className={classnames('carousel', `carousel__animation--${switchAnimation}`)}
+      className={classnames(
+        'carousel',
+        `carousel__animation--${switchAnimation}`,
+      )}
       ref={carouselRef}
+      onAnimationEnd={() => {
+        carouselRef.current.classList.remove('carousel__animation--run');
+      }}
     >
-      <ItemList
-        items={items}
-        selectedId={selectedId}
-        itemWidth={itemWidth}
-        itemHeight={itemHeight}
-      />
+      <div className="carousel__list-wrapper">
+        <ItemList
+          items={items}
+          selectedId={selectedId}
+          itemWidth={itemWidth}
+          itemHeight={itemHeight}
+        />
+      </div>
 
       <div className="carousel__switcher-wrapper">
         <Switcher
           items={items}
           selectedId={selectedId}
-          onSelect={setSelectedId}
+          onSelect={onSlideSelect}
           selectPrev={selectPrev}
           selectNext={selectNext}
         />

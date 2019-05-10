@@ -17,6 +17,7 @@
   }
 
   &__item-wrapper {
+    box-sizing: border-box;
   }
 
   &__switcher-wrapper {
@@ -34,17 +35,29 @@
 
   &__animation--zoom_out {
     .carousel__list {
-      animation-name: switch_animation__zoom-out;
-      animation-duration: 4s;
+      transition: margin-left 0.5s linear 0.25s;
+    }
+
+    &.carousel__animation--run {
+      .carousel__list-wrapper {
+        animation-name: switch_animation__zoom-out;
+        animation-duration: 1s;
+        animation-timing-function: linear;
+      }
     }
   }
 }
 
 @keyframes switch_animation__zoom-out {
-  from {
-    background-color: red;
+  25% {
+    transform: scale(0.5);
   }
+
+  75% {
+    transform: scale(0.5);
+  }
+
   to {
-    background-color: yellow;
+    transform: scale(1);
   }
 }

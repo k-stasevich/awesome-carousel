@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { carouselItemPropTypes } from '../propTypes';
 
-export const ItemList = props => {
-  const { items, selectedId, itemWidth, itemHeight } = props;
-
+export const ItemList = ({ items, selectedId, itemWidth, itemHeight }) => {
   return (
-    <ul className="carousel__list" style={{ marginLeft: getCarouselOffset(items, selectedId, itemWidth) }}>
+    <ul
+      className="carousel__list"
+      style={{ marginLeft: getCarouselOffset(items, selectedId, itemWidth) }}
+    >
       {items.map(item => {
         const { label, id } = item;
 
